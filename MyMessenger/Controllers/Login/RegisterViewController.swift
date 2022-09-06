@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class RegisterViewController: UIViewController {
     
     private lazy var imageView: UIImageView = {
@@ -174,13 +174,21 @@ class RegisterViewController: UIViewController {
               !name.isEmpty,
               !surname.isEmpty
         else {
-            alertUserLoginError()
+            alertUserRegisterError()
             return
         }
         // Firebase Register
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            guard let result = authResult, error == nil else {
+                fatalError("error creating user")
+            }
+        
+            let user = result.user
+            print("created user: \(user)")
+        }
     }
     
-    func alertUserLoginError(){
+    func alertUserRegisterError(){
         let alert = UIAlertController(title: "Woops", message: "Please enter all information to create a new account", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
         present(alert, animated: true)
