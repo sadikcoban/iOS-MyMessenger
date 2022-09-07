@@ -6,24 +6,56 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class NewConversationViewController: UIViewController {
+    
+    private lazy var spinner: JGProgressHUD = {
+        let view = JGProgressHUD(style: .dark)
+        return view
+    }()
+    
+    private lazy var noResultLabel: UILabel = {
+        let view = UILabel()
+        view.text = "No Results"
+        view.textAlignment = .center
+        view.textColor = .gray
+        view.font = .systemFont(ofSize: 21, weight: .medium)
+        view.isHidden = true
+        return view
+    }()
+    
+    private lazy var searchBar: UISearchBar = {
+        let bar = UISearchBar()
+        bar.placeholder = "Search for users..."
+        return bar
+    }()
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.isHidden = true
+        return tableView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.hideKeyboardWhenTappedAround()
+        searchBar.delegate = self
+        view.backgroundColor = .white
+        navigationController?.navigationBar.topItem?.titleView = searchBar
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(dismissSelf))
+        searchBar.becomeFirstResponder()
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc private func dismissSelf(){
+        dismiss(animated: true)
     }
-    */
+}
 
+extension NewConversationViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+    }
 }
