@@ -21,7 +21,9 @@
 		9440D60D28C7859F00E234B1 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9440D60C28C7859F00E234B1 /* NewConversationViewController.swift */; };
 		9440D60F28C785AB00E234B1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9440D60E28C785AB00E234B1 /* ProfileViewController.swift */; };
 		9440D61428C78BC100E234B1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9440D61328C78BC100E234B1 /* Extensions.swift */; };
-		9440D61628C7D69D00E234B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9440D61528C7D69D00E234B1 /* GoogleService-Info.plist */; };
+		9440D61828C7DE7A00E234B1 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9440D61728C7DE7A00E234B1 /* DatabaseManager.swift */; };
+		9440D61A28C7DFD800E234B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9440D61928C7DFD800E234B1 /* GoogleService-Info.plist */; };
+		9442E1BD28C89D7800527BFB /* GoogleServiceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9442E1BC28C89D7800527BFB /* GoogleServiceUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +43,10 @@
 		9440D60C28C7859F00E234B1 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		9440D60E28C785AB00E234B1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9440D61328C78BC100E234B1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		9440D61528C7D69D00E234B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9440D61728C7DE7A00E234B1 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		9440D61928C7DFD800E234B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9440D61B28C8878100E234B1 /* MyMessenger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyMessenger.entitlements; sourceTree = "<group>"; };
+		9442E1BC28C89D7800527BFB /* GoogleServiceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleServiceUtil.swift; sourceTree = "<group>"; };
 		973B7DF790ACA937A18E9D6B /* Pods_MyMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C821FA033D8FD84FFBC9A751 /* Pods-MyMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMessenger.debug.xcconfig"; path = "Target Support Files/Pods-MyMessenger/Pods-MyMessenger.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				9440D5E628C77EF100E234B1 /* MyMessenger */,
+				9442E1BB28C89D6000527BFB /* Utils */,
 				9440D5E528C77EF100E234B1 /* Products */,
 				828A7400FE17A16DF974716F /* Pods */,
 				221E499E8FE6C43892C1F60B /* Frameworks */,
@@ -96,13 +102,14 @@
 		9440D5E628C77EF100E234B1 /* MyMessenger */ = {
 			isa = PBXGroup;
 			children = (
+				9440D61B28C8878100E234B1 /* MyMessenger.entitlements */,
+				9440D61928C7DFD800E234B1 /* GoogleService-Info.plist */,
 				9440D5FC28C780DF00E234B1 /* Views */,
 				9440D5FB28C780DA00E234B1 /* Controllers */,
 				9440D5FD28C780E900E234B1 /* Models */,
 				9440D5FE28C780EE00E234B1 /* ViewModels */,
 				9440D5FF28C780F200E234B1 /* Resources */,
 				9440D5F528C77EF200E234B1 /* Info.plist */,
-				9440D61528C7D69D00E234B1 /* GoogleService-Info.plist */,
 			);
 			path = MyMessenger;
 			sourceTree = "<group>";
@@ -149,6 +156,7 @@
 				9440D5E928C77EF100E234B1 /* SceneDelegate.swift */,
 				9440D5E728C77EF100E234B1 /* AppDelegate.swift */,
 				9440D61328C78BC100E234B1 /* Extensions.swift */,
+				9440D61728C7DE7A00E234B1 /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -169,6 +177,14 @@
 				9440D60628C7855D00E234B1 /* RegisterViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		9442E1BB28C89D6000527BFB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9442E1BC28C89D7800527BFB /* GoogleServiceUtil.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9440D5F428C77EF200E234B1 /* LaunchScreen.storyboard in Resources */,
-				9440D61628C7D69D00E234B1 /* GoogleService-Info.plist in Resources */,
+				9440D61A28C7DFD800E234B1 /* GoogleService-Info.plist in Resources */,
 				9440D5F128C77EF200E234B1 /* Assets.xcassets in Resources */,
 				9440D5EF28C77EF100E234B1 /* Main.storyboard in Resources */,
 			);
@@ -289,6 +305,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9440D60228C7852B00E234B1 /* LoginViewController.swift in Sources */,
+				9440D61828C7DE7A00E234B1 /* DatabaseManager.swift in Sources */,
+				9442E1BD28C89D7800527BFB /* GoogleServiceUtil.swift in Sources */,
 				9440D60728C7855D00E234B1 /* RegisterViewController.swift in Sources */,
 				9440D60D28C7859F00E234B1 /* NewConversationViewController.swift in Sources */,
 				9440D5EC28C77EF100E234B1 /* ConversationsViewController.swift in Sources */,
@@ -444,11 +462,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MyMessenger/MyMessenger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 828D65W9F7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyMessenger/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please allow access to select a photo for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -477,11 +498,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MyMessenger/MyMessenger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 828D65W9F7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyMessenger/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please allow access to select a photo for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

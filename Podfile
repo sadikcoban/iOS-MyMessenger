@@ -4,12 +4,16 @@
 target 'MyMessenger' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
-  # Pods for MyMessenger
-pod 'Firebase/Core'
-pod 'Firebase/Auth'
-pod 'Firebase/Database'
-
-
-
+  
+  # Firebase
+  pod 'Firebase/Core'
+  pod 'FirebaseAuth'
+  pod 'Firebase/Database'
+  
+  #Facebook
+  pod 'FBSDKLoginKit'
+  
+  #Google
+  pod 'GoogleSignIn'
+  
 end

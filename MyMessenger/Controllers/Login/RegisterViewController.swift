@@ -11,7 +11,7 @@ class RegisterViewController: UIViewController {
     
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: "person")
+        view.image = UIImage(systemName: "person.circle")
         view.tintColor = .gray
         view.contentMode = .scaleAspectFit
         view.layer.masksToBounds = true
@@ -177,19 +177,27 @@ class RegisterViewController: UIViewController {
             alertUserRegisterError()
             return
         }
-        // Firebase Register
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            guard let result = authResult, error == nil else {
-                fatalError("error creating user")
+        DatabaseManager.shared.userExists(with: email) {[weak self] exists in
+            guard let strongSelf = self else { return }
+            if exists {
+                strongSelf.alertUserRegisterError(message: "Looks like a user account for that email address already exists")
+                return
             }
-        
-            let user = result.user
-            print("created user: \(user)")
+            // Firebase Register
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) {authResult, error in
+                guard let _ = authResult, error == nil else {
+                    fatalError("error creating user")
+                }
+                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: name, lastName: surname, emailAddress: email))
+                
+                strongSelf.navigationController?.dismiss(animated: true)
+            }
         }
+       
     }
     
-    func alertUserRegisterError(){
-        let alert = UIAlertController(title: "Woops", message: "Please enter all information to create a new account", preferredStyle: .alert)
+    func alertUserRegisterError(message: String = "Please enter all information to create a new account"){
+        let alert = UIAlertController(title: "Woops", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
         present(alert, animated: true)
         
