@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		80562C39E89EC5BABC39F627 /* Pods_MyMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 973B7DF790ACA937A18E9D6B /* Pods_MyMessenger.framework */; };
+		942DBC0D28CA300F00873475 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942DBC0C28CA300F00873475 /* ConversationTableViewCell.swift */; };
 		9440D5E828C77EF100E234B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9440D5E728C77EF100E234B1 /* AppDelegate.swift */; };
 		9440D5EA28C77EF100E234B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9440D5E928C77EF100E234B1 /* SceneDelegate.swift */; };
 		9440D5EC28C77EF100E234B1 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9440D5EB28C77EF100E234B1 /* ConversationsViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		1305EB0607E95C9BBE9673AE /* Pods-MyMessenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMessenger.release.xcconfig"; path = "Target Support Files/Pods-MyMessenger/Pods-MyMessenger.release.xcconfig"; sourceTree = "<group>"; };
+		942DBC0C28CA300F00873475 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		9440D5E428C77EF100E234B1 /* MyMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9440D5E728C77EF100E234B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9440D5E928C77EF100E234B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				9440D60028C7811300E234B1 /* Storyboards */,
 				9440D5F028C77EF200E234B1 /* Assets.xcassets */,
+				942DBC0C28CA300F00873475 /* ConversationTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				9440D60F28C785AB00E234B1 /* ProfileViewController.swift in Sources */,
 				9440D5EA28C77EF100E234B1 /* SceneDelegate.swift in Sources */,
 				9440D60928C7857600E234B1 /* PhotoViewerViewController.swift in Sources */,
+				942DBC0D28CA300F00873475 /* ConversationTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
