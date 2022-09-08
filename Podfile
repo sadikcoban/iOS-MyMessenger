@@ -9,6 +9,7 @@ target 'MyMessenger' do
   pod 'Firebase/Core'
   pod 'FirebaseAuth'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
   
   #Facebook
   pod 'FBSDKLoginKit'
@@ -18,7 +19,7 @@ target 'MyMessenger' do
   
   pod 'MessageKit'
   pod "JGProgressHUD"
-  pod 'RealmSwift'
+  pod 'RealmSwift', '10.28.6'
   pod 'SDWebImage'
   
   

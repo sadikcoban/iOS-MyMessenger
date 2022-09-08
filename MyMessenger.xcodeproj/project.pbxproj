@@ -25,6 +25,7 @@
 		9440D61A28C7DFD800E234B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9440D61928C7DFD800E234B1 /* GoogleService-Info.plist */; };
 		9442E1BD28C89D7800527BFB /* GoogleServiceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9442E1BC28C89D7800527BFB /* GoogleServiceUtil.swift */; };
 		9442E1BF28C923BF00527BFB /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9442E1BE28C923BF00527BFB /* ChatViewController.swift */; };
+		9442E1C128C948DC00527BFB /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9442E1C028C948DC00527BFB /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		9440D61B28C8878100E234B1 /* MyMessenger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyMessenger.entitlements; sourceTree = "<group>"; };
 		9442E1BC28C89D7800527BFB /* GoogleServiceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleServiceUtil.swift; sourceTree = "<group>"; };
 		9442E1BE28C923BF00527BFB /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		9442E1C028C948DC00527BFB /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		973B7DF790ACA937A18E9D6B /* Pods_MyMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C821FA033D8FD84FFBC9A751 /* Pods-MyMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMessenger.debug.xcconfig"; path = "Target Support Files/Pods-MyMessenger/Pods-MyMessenger.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +162,7 @@
 				9440D5E728C77EF100E234B1 /* AppDelegate.swift */,
 				9440D61328C78BC100E234B1 /* Extensions.swift */,
 				9440D61728C7DE7A00E234B1 /* DatabaseManager.swift */,
+				9442E1C028C948DC00527BFB /* StorageManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				9440D60228C7852B00E234B1 /* LoginViewController.swift in Sources */,
 				9440D61828C7DE7A00E234B1 /* DatabaseManager.swift in Sources */,
 				9442E1BD28C89D7800527BFB /* GoogleServiceUtil.swift in Sources */,
+				9442E1C128C948DC00527BFB /* StorageManager.swift in Sources */,
 				9440D60728C7855D00E234B1 /* RegisterViewController.swift in Sources */,
 				9440D60D28C7859F00E234B1 /* NewConversationViewController.swift in Sources */,
 				9440D5EC28C77EF100E234B1 /* ConversationsViewController.swift in Sources */,

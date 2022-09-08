@@ -184,7 +184,9 @@ class RegisterViewController: UIViewController {
             alertUserRegisterError()
             return
         }
+        
         spinner.show(in: view)
+        
         DatabaseManager.shared.userExists(with: email) {[weak self] exists in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
@@ -199,12 +201,29 @@ class RegisterViewController: UIViewController {
                 guard let _ = authResult, error == nil else {
                     fatalError("error creating user")
                 }
-                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: name, lastName: surname, emailAddress: email))
-                
-                strongSelf.navigationController?.dismiss(animated: true)
+                let chatUser = ChatAppUser(firstName: name, lastName: surname, emailAddress: email)
+                DatabaseManager.shared.insertUser(with: chatUser) { success in
+                    if success {
+                        //upload image
+                        guard let image = strongSelf.imageView.image,
+                              let data = image.pngData() else { return }
+                        let fileName = chatUser.profilePictureFileName
+                        StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName) { result in
+                            switch result {
+                            case .success(let urlString):
+                                UserDefaults.standard.set(urlString, forKey: "profile_picture_url")
+                                strongSelf.navigationController?.dismiss(animated: true)
+                                print(urlString)
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
+                    }
+                    
+                }
             }
         }
-       
+        
     }
     
     func alertUserRegisterError(message: String = "Please enter all information to create a new account"){
@@ -214,7 +233,7 @@ class RegisterViewController: UIViewController {
         
     }
     
-
+    
 }
 
 

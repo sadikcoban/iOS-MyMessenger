@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
         let view = JGProgressHUD(style: .dark)
         return view
     }()
-
+    
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "logo")
@@ -152,7 +152,7 @@ class LoginViewController: UIViewController {
         spinner.show(in: view)
         // Firebase Log In
         FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) {[weak self] authResult, error in
-    
+            
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 strongSelf.spinner.dismiss()
@@ -162,6 +162,7 @@ class LoginViewController: UIViewController {
                 return
             }
             let user = result.user
+            UserDefaults.standard.set(email, forKey: "email")
             print("Logged in user: \(user)")
             strongSelf.navigationController?.dismiss(animated: true)
         }
@@ -179,7 +180,33 @@ class LoginViewController: UIViewController {
             DatabaseManager.shared.userExists(with: email) { exists in
                 if !exists {
                     //insert to db
-                    DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email))
+                    let chatUser = ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email)
+                    DatabaseManager.shared.insertUser(with: chatUser) { success in
+                        if success {
+                            //upload image
+                            if profile.hasImage {
+                                guard let url = profile.imageURL(withDimension: 200) else { return }
+                                URLSession.shared.dataTask(with: url) { data, _, _ in
+                                    guard let data = data else {
+                                        return
+                                    }
+                                    
+                                    let fileName = chatUser.profilePictureFileName
+                                    StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName) { result in
+                                        switch result {
+                                        case .success(let urlString):
+                                            UserDefaults.standard.set(urlString, forKey: "profile_picture_url")
+                                            print(urlString)
+                                        case .failure(let error):
+                                            print(error)
+                                        }
+                                    }
+                                    
+                                }.resume()
+                            }
+                            
+                        }
+                    }
                 }
             }
             
@@ -190,7 +217,7 @@ class LoginViewController: UIViewController {
                     print("failed to login with google")
                     return
                 }
-                
+                UserDefaults.standard.set(email, forKey: "email")
                 strongSelf.navigationController?.dismiss(animated: true)
             }
         }
